@@ -1,0 +1,67 @@
+/* Start Global Style */
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+:root {
+    --main-color: #570085;
+    --main-trans: 0.3s;
+}
+a {
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+input:focus,
+textarea:focus  {
+    outline: none;
+}
+body {
+    background-color: #333;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+}
+.container{
+    padding: 0 15px;
+    margin: auto;
+    position: relative;
+}
+/* Start Grid System */
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+/* End Global Style */
+
+/* ### Start Styling ### */
+
+.head {
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+/* ### End Styling ### */
