@@ -4,10 +4,10 @@
 //[4] clear inputs
 //[5] read
 //[6] delete
-//[7] count
-//[8] update
-//[9] search
-//[10] clean data
+//[7] clean data
+//[8] count
+//[9] update
+//[10] search
 
 
 // -- [1] To Get The Input Elements --
@@ -72,8 +72,20 @@ submit.addEventListener("click", () => {
             count : count.value,
             category : category.value
         }
-        // Add Product To Data Array
-        dataPro.push(newPro)
+
+        // If We Add More Than One Product
+        if (newPro.count > 1) {
+            for (let i=0; i<newPro.count; i++) {
+                dataPro.push(newPro)
+                console.log(newPro.count)
+            }
+        } else {
+            // If One Element
+            dataPro.push(newPro)
+        }
+
+
+
     
         // -- [3] To Set Array Of Products In Local Storage --
         localStorage.setItem("products", JSON.stringify(dataPro))
@@ -127,6 +139,15 @@ function showData() {
     `
     }
     document.getElementById("tbody").innerHTML = table
+
+    let btnDelete = document.querySelector(".delete-all")
+    if (dataPro.length >= 1) {
+        btnDelete.innerHTML = `
+            <button id="del-all" onclick=deleteAll()><span>Delete All (${dataPro.length})</span></button>
+        `
+    } else {
+        btnDelete.innerHTML = ``
+    }
 }
 showData()
 
@@ -135,5 +156,15 @@ showData()
 function deletePro(i) {
     dataPro.splice(i, 1)
     localStorage.setItem("products", JSON.stringify(dataPro))
+    showData()
+}
+
+// For Delete All Products
+function deleteAll() {
+    // Make The Main Array Empty
+    dataPro = []
+    // Also Clear Local Storage Because (dataPro) Will Take It's Data After Reload
+    localStorage.products = ""
+    // Show The Data
     showData()
 }

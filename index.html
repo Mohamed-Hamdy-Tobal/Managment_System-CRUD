@@ -17,16 +17,62 @@
 <body>
     
     <div class="container">
+        <!-- The Header -->
         <div class="head">
             <h2>crud</h2>
             <p>products management system</p>
         </div>
-        <div class="input">
 
+        <!-- The Inputs Fill -->
+        <div class="input">
+            <span class="flash">Please fill out the form.</span>
+            <input type="text" id="title" placeholder="title">
+            <div class="price">
+                <input type="number" id="price" placeholder="price">
+                <input type="number" id="taxes" placeholder="taxes">
+                <input type="number" id="ads" placeholder="ads">
+                <input type="number" id="discount" placeholder="discount">
+                <small id="total">0</small>
+            </div>
+            <input type="number" placeholder="count" id="count">
+            <input type="text" placeholder="category" id="category">
+            <button id="submit"><span>Create</span></button>
         </div>
-        <div class="output"></div>
+
+        <!-- The Outputs Data -->
+        <div class="output">
+            <div class="searchBlock">
+                <input type="text" id="search" placeholder="search">
+                <div class="btnSearch">
+                    <button id="searchTitle"><span>Search By Title</span></button>
+                    <button id="searchCategory"><span>Search By Category</span></button>
+                </div>
+            </div>
+
+            <div class="table-output">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>title</th>
+                            <th>price</th>
+                            <th>taxes</th>
+                            <th>ads</th>
+                            <th>discount</th>
+                            <th>total</th>
+                            <th>category</th>
+                            <th>update</th>
+                            <th>delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <script src="js/main.js"></script>
 </body>
-</html>
+
+<!-- 1:15:00 -->
