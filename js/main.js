@@ -170,6 +170,14 @@ function deleteAll() {
 }
 
 // -- [9] For Update Element In The Array
-function updatePro() {
-    
+function updatePro(i) {
+    title.value = dataPro[i].title
+    price.value = dataPro[i].price
+    taxes.value = dataPro[i].taxes
+    ads.value = dataPro[i].ads
+    discount.value = dataPro[i].discount
+    getTotal()
+    count.style.display = 'none'
+    category.value = dataPro[i].category
+    submit.querySelector("span").innerHTML = 'Update'
 }

@@ -24,6 +24,12 @@ body {
     color: #fff;
     font-family: 'Open Sans', sans-serif;
 }
+/* Disable the blue highlight on tap/click for buttons and links */
+a, button {
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    outline: none; /* Optionally remove the outline on focus as well */
+}
 .container{
     padding: 0 15px;
     margin: auto;
