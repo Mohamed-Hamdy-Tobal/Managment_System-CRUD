@@ -21,6 +21,11 @@ let count = document.getElementById("count")
 let category = document.getElementById("category")
 let submit = document.getElementById("submit")
 
+// Create The Mood That Check Whether I Will Create A Product Or Update It
+let mood = 'create'
+
+// The Tmp That Hold The Index Of File That Will Be Updated
+let tmp;
 
 // Function To Get Total
 function getTotal() {
@@ -54,8 +59,9 @@ if (localStorage.products != null) {
 let warning = document.querySelector(".input > span")
 // -- [2] The Main Function Of Creating Product --
 submit.addEventListener("click", () => {
+    console.log(mood)
 
-    if (title.value !== '' && price.value !== '' && taxes.value !== '' && ads.value !== '' && discount.value !== '' && count.value !== '' && category.value !== '') {
+    if (title.value !== '' && price.value !== '' && taxes.value !== '' && ads.value !== '' && discount.value !== '' && category.value !== '') {
         
         // Delete Warning Element
         warning.style.display = 'none'
@@ -73,15 +79,23 @@ submit.addEventListener("click", () => {
             category : category.value
         }
 
-        // [8] If We Add More Than One Product
-        if (newPro.count > 1) {
-            for (let i=0; i<newPro.count; i++) {
+        if (mood === 'create') {
+            // [8] If We Add More Than One Product
+            if (newPro.count > 1) {
+                for (let i=0; i<newPro.count; i++) {
+                    dataPro.push(newPro)
+                    console.log(newPro.count)
+                }
+            } else {
+                // If One Element
                 dataPro.push(newPro)
-                console.log(newPro.count)
-            }
+            } 
         } else {
-            // If One Element
-            dataPro.push(newPro)
+            // If Mood Is Update, only update date not create new one
+            dataPro[tmp] = newPro;
+            mood = 'create'
+            submit.querySelector("span").innerHTML = "Create"
+            count.style.display = 'block'
         }
 
 
@@ -180,4 +194,15 @@ function updatePro(i) {
     count.style.display = 'none'
     category.value = dataPro[i].category
     submit.querySelector("span").innerHTML = 'Update'
+
+    // Change The Mood To Updated
+    mood = 'update'
+
+    // Make The tmp variable hold the index of updated product
+    tmp = i
+
+    scroll({
+        top:0,
+        behavior:"smooth",
+    })
 }
