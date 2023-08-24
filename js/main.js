@@ -59,9 +59,7 @@ if (localStorage.products != null) {
 let warning = document.querySelector(".input > span")
 // -- [2] The Main Function Of Creating Product --
 submit.addEventListener("click", () => {
-    console.log(mood)
-
-    if (title.value !== '' && price.value !== '' && taxes.value !== '' && ads.value !== '' && discount.value !== '' && category.value !== '') {
+    if (title.value !== '' && price.value !== '' && category.value !== '' && count.value <= 100) {
         
         // Delete Warning Element
         warning.style.display = 'none'
@@ -71,9 +69,9 @@ submit.addEventListener("click", () => {
         let newPro = {
             title : title.value,
             price : price.value,
-            taxes : taxes.value,
-            ads : ads.value,
-            discount : discount.value,
+            taxes : taxes.value | "0",
+            ads : ads.value | "0",
+            discount : discount.value | "0",
             total: total.innerHTML,
             count : count.value,
             category : category.value
@@ -114,6 +112,11 @@ submit.addEventListener("click", () => {
         // Add Warning Element
         warning.style.display = 'block'
         warning.classList.add("flash")
+        if (count.value <= 100) {
+            warning.innerHTML = "Please fill out the form"
+        } else {
+            warning.innerHTML = "Maximum 100 Product"
+        }
     }
 })
 
@@ -205,4 +208,72 @@ function updatePro(i) {
         top:0,
         behavior:"smooth",
     })
+}
+
+// -- [10] Search For Product --
+
+// let the main search mood is title
+let searchMood = 'title'
+
+function getSearchMood(id) {
+    console.log(id)
+
+    let search = document.getElementById("search")
+    if (id == 'searchTitle') {
+        searchMood = 'title'
+    } else {
+        searchMood = "category"
+    }
+    search.placeholder = `Search By ${searchMood[0].toUpperCase()}${searchMood.slice(1)}`
+    search.focus()
+    search.value = ''
+    showData()
+}
+
+// The Function For Search Data
+function searchData(value) {
+    
+    let table = ''
+
+    if (searchMood == 'title') {
+
+        for (let i=0; i<dataPro.length; i++) {
+            if (dataPro[i].title.toLowerCase().includes(value.toLowerCase())) {
+                table += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${dataPro[i].title}</td>
+                    <td>${dataPro[i].price}</td>
+                    <td>${dataPro[i].taxes}</td>
+                    <td>${dataPro[i].ads}</td>
+                    <td>${dataPro[i].discount}</td>
+                    <td>${dataPro[i].total}</td>
+                    <td>${dataPro[i].category}</td>
+                    <td><button id="searchTitle" onclick=updatePro(${i})><span>update</span></button></td>
+                    <td><button id="searchTitle" onclick=deletePro(${i})><span>delete</span></button></td>
+                </tr>
+            `
+            }
+        }
+    } else {
+        for (let i=0; i<dataPro.length; i++) {
+            if (dataPro[i].category.toLowerCase().includes(value.toLowerCase())) {
+                table += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${dataPro[i].title}</td>
+                    <td>${dataPro[i].price}</td>
+                    <td>${dataPro[i].taxes}</td>
+                    <td>${dataPro[i].ads}</td>
+                    <td>${dataPro[i].discount}</td>
+                    <td>${dataPro[i].total}</td>
+                    <td>${dataPro[i].category}</td>
+                    <td><button id="searchTitle" onclick=updatePro(${i})><span>update</span></button></td>
+                    <td><button id="searchTitle" onclick=deletePro(${i})><span>delete</span></button></td>
+                </tr>
+            `
+            }
+        }
+    }
+    document.getElementById("tbody").innerHTML = table
 }
