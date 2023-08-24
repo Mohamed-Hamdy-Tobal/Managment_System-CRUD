@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUDS System</title>
-    <!-- Normalize CSS File -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="css/master.css">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRUDS System</title>
+        <!-- Normalize CSS File -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <!-- Main CSS File -->
+        <link rel="stylesheet" href="css/master.css">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap">
 
-</head>
-<body>
-    
-    <div class="container">
-        <!-- The Header -->
-        <div class="head">
-            <h2>crud</h2>
-            <p>products management system</p>
-        </div>
-
-        <!-- The Inputs Fill -->
-        <div class="input">
-            <span class="flash">Please fill out the form.</span>
-            <input type="text" id="title" placeholder="title">
-            <div class="price">
-                <input type="number" id="price" placeholder="price">
-                <input type="number" id="taxes" placeholder="taxes">
-                <input type="number" id="ads" placeholder="ads">
-                <input type="number" id="discount" placeholder="discount">
-                <small id="total">0</small>
+    </head>
+    <body>
+        
+        <div class="container">
+            <!-- The Header -->
+            <div class="head">
+                <h2>crud</h2>
+                <p>products management system</p>
             </div>
-            <input type="number" placeholder="count" id="count">
-            <input type="text" placeholder="category" id="category">
-            <button id="submit"><span>Create</span></button>
-        </div>
 
-        <!-- The Outputs Data -->
-        <div class="output">
-            <div class="searchBlock">
-                <input type="text" id="search" placeholder="search" onkeyup="searchData(this.value)">
-                <div class="btnSearch">
-                    <button onclick="getSearchMood(this.id)" id="searchTitle"><span>Search By Title</span></button>
-                    <button onclick="getSearchMood(this.id)" id="searchCategory"><span>Search By Category</span></button>
+            <!-- The Inputs Fill -->
+            <div class="input">
+                <span class="flash">Please fill out the form.</span>
+                <input type="text" id="title" placeholder="title">
+                <div class="price">
+                    <input type="number" id="price" placeholder="price">
+                    <input type="number" id="taxes" placeholder="taxes">
+                    <input type="number" id="ads" placeholder="ads">
+                    <input type="number" id="discount" placeholder="discount">
+                    <small id="total">0</small>
+                </div>
+                <input type="number" placeholder="count" id="count">
+                <input type="text" placeholder="category" id="category">
+                <button id="submit"><span>Create</span></button>
+            </div>
+
+            <!-- The Outputs Data -->
+            <div class="output">
+                <div class="searchBlock">
+                    <input type="text" id="search" placeholder="search" onkeyup="searchData(this.value)">
+                    <div class="btnSearch">
+                        <button onclick="getSearchMood(this.id)" id="searchTitle"><span>Search By Title</span></button>
+                        <button onclick="getSearchMood(this.id)" id="searchCategory"><span>Search By Category</span></button>
+                    </div>
+                </div>
+
+                <div class="delete-all">
+
+                </div>
+                <div class="table-output">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>title</th>
+                                <th>price</th>
+                                <th>taxes</th>
+                                <th>ads</th>
+                                <th>discount</th>
+                                <th>total</th>
+                                <th>category</th>
+                                <th>update</th>
+                                <th>delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
-            <div class="delete-all">
-
-            </div>
-            <div class="table-output">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>title</th>
-                            <th>price</th>
-                            <th>taxes</th>
-                            <th>ads</th>
-                            <th>discount</th>
-                            <th>total</th>
-                            <th>category</th>
-                            <th>update</th>
-                            <th>delete</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    </tbody>
-                </table>
-            </div>
         </div>
-    </div>
 
-    <script src="js/main.js"></script>
-</body>
-
+        <script src="js/main.js"></script>
+    </body>
+</html>
 <!-- 1:32:30 -->
